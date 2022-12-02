@@ -15,24 +15,10 @@ export class PacientesController
         return this.pacientesService.getAll();
     }
 
-    /* @Get(':id')
-    async getById(@Param('id') id: number): Promise<Paciente> 
-    {
-        return this.pacientesService.getById(id);
-    } */
-
     @Get(':token')
-    async getByToken(@Param('token') token: string): Promise<Paciente> 
-    {
+    async getByToken(@Param('token') token: string): Promise<Paciente> {
         return this.pacientesService.getByToken(token);
     }
-
-    // retornar um lista
-    /* @Get(':fname')
-    async geByFname(@Param('fname') fname: string): Promise<Paciente> 
-    {
-        return this.pacientesService.getByFname(fname);
-    } */
 
     @Post()
     async create(@Body() paciente:Paciente): Promise<Paciente> 
@@ -40,16 +26,15 @@ export class PacientesController
         return this.pacientesService.create(paciente);
     }
 
+
     @Put(':token')
-    async update(@Param('token') token: string, @Body() paciente: Paciente): Promise<Paciente> 
-    {
-        paciente.token = token;
-        return this.pacientesService.update(paciente);
+    async update(@Param('token') token: string, @Body() paciente: Paciente): Promise<Paciente> {
+        return this.pacientesService.updateOne({ token: token }, paciente);
     }
 
-    @Delete(':id')
-    async delete(@Param('id') id: number) 
+    @Delete(':token')
+    async deleteOne(@Param('token') token: string) 
     {
-        this.pacientesService.delete(id);
+        this.pacientesService.deleteOne({ token: token });
     }
 }

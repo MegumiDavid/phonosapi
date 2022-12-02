@@ -1,9 +1,10 @@
-export class Paciente {
-    id: number;
+import { Document } from 'mongoose'
+
+export class Paciente extends Document {
+    token: string;
     fname: string;
     lname: string;
     img: string;
-    token: string;
     bday: string;
     condicao: string;
     firstLogin: boolean;
