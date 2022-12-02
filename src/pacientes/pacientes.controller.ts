@@ -15,11 +15,11 @@ export class PacientesController
         return this.pacientesService.getAll();
     }
 
-    @Get(':id')
+    /* @Get(':id')
     async getById(@Param('id') id: number): Promise<Paciente> 
     {
         return this.pacientesService.getById(id);
-    }
+    } */
 
     @Get(':token')
     async getByToken(@Param('token') token: string): Promise<Paciente> 
@@ -28,11 +28,11 @@ export class PacientesController
     }
 
     // retornar um lista
-    @Get(':fname')
+    /* @Get(':fname')
     async geByFname(@Param('fname') fname: string): Promise<Paciente> 
     {
         return this.pacientesService.getByFname(fname);
-    }
+    } */
 
     @Post()
     async create(@Body() paciente:Paciente): Promise<Paciente> 

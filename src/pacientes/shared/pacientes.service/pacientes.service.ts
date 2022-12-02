@@ -72,11 +72,11 @@ export class PacientesService
         return this.pacientes;
     }
     
-    getById(id: number)
+    /* getById(id: number)
     {
         const paciente = this.pacientes.find((value) => value.id == id);
         return paciente;
-    }
+    } */
 
     getByToken(token: string)
     {
@@ -84,11 +84,11 @@ export class PacientesService
         return paciente;
     }
     
-    getByFname(fname: string)
+    /* getByFname(fname: string)
     {
         const paciente = this.pacientes.find((value) => value.fname == fname);
         return paciente;
-    }
+    } */
 
     // getPacienteByFono
     
