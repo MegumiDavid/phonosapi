@@ -6,4 +6,7 @@ export class Paciente {
     token: string;
     bday: string;
     condicao: string;
+    firstLogin: boolean;
+    password: string;
+    fonos: String[];
 }
