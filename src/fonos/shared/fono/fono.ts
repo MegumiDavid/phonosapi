@@ -3,9 +3,10 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 
 
 @Schema()
-export class Paciente extends Document {
+export class Fono extends Document 
+{
     @Prop()
-    token: string;
+    crfa: string;
 
     @Prop()
     fname: string;
@@ -17,20 +18,13 @@ export class Paciente extends Document {
     img: string;
     
     @Prop()
-    bday: string;
-
-    @Prop()
-    condicao: string;
-
-    @Prop()
-    firstLogin: boolean;
+    email: string;
 
     @Prop()
     password: string;
 
     @Prop()
-    fonos: String[];
+    pacientes: String[];
 }
 
-
-export const UserSchema = SchemaFactory.createForClass(Paciente)
+export const UserSchema = SchemaFactory.createForClass(Fono);

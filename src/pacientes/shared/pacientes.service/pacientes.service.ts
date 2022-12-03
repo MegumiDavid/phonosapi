@@ -53,39 +53,6 @@ export class PacientesService
 
     constructor(@InjectModel('Paciente') private readonly pacienteModel: Model<Paciente>) { }
 
-    randomChar()
-    {
-        let max, min;
-    
-        switch (Math.floor(Math.random() * 3)) 
-        {
-            case 0:
-                min=48;
-                   max= 57;
-                break;
-    
-            case 1:
-                min=65;
-                   max= 90;
-                break;
-        
-            default:
-                min=97;
-                   max= 122;
-                break;
-        }
-    
-        return Math.floor(Math.random() * (max - min) + min);
-    }
-    tokenGenerator()
-    {
-        let token = '';
-        for (let i =0; i<5; i++)
-            token = token + String.fromCharCode(randomChar())
-    
-        return token; 
-    }
-
     async getAll() {
         return await this.pacienteModel.find().exec();
     }
