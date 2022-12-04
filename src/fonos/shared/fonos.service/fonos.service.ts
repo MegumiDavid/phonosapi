@@ -6,31 +6,15 @@ import { Fono } from '../fono/fono';
 const randomChar = () => 
 {
     let max, min;
-
-    switch (Math.floor(Math.random() * 3)) 
-    {
-        case 0:
-	        min=48;
-   	        max= 57;
-	        break;
-
-        case 1:
-	        min=65;
-   	        max= 90;
-	        break;
-    
-        default:
-            min=97;
-   	        max= 122;
-	        break;
-    }
+	min=48;
+   	max= 57;
 
     return Math.floor(Math.random() * (max - min) + min);
 }
 const crfaGenerator = () =>
 {
     let crfa = '';
-    for (let i =0; i<8; i++)
+    for (let i =0; i<5; i++)
         crfa = crfa + String.fromCharCode(randomChar())
 
     return crfa; 
