@@ -9,7 +9,7 @@ export class AgendamentosService
     updateOne(arg0: { fono: string; }, agendamento: Agendamento): Agendamento | PromiseLike<Agendamento> {
         throw new Error('Method not implemented.');
     }
-    deleteOne(arg0: { fono: string; }) {
+    deleteOne(arg0: { id: string; }) {
         throw new Error('Method not implemented.');
     }
     getByfono(fono: string): Agendamento | PromiseLike<Agendamento> {
@@ -27,10 +27,7 @@ export class AgendamentosService
         return await createdAgendamento.save();
     }
 
-
-    async delete(fono: string) {
-        return await this.AgendamentoModel.deleteOne({ fono: fono }).exec();
+    async delete(id: string) {
+        return await this.AgendamentoModel.deleteOne({ _id: id }).exec();
     }
-  
-    
 }

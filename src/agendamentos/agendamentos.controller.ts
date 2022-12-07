@@ -15,13 +15,14 @@ export class AgendamentosController
         return this.AgendamentosService.getAll();
     }
 
-
     @Post()
     async create(@Body() agendamento:Agendamento): Promise<Agendamento> 
     {
         return this.AgendamentosService.create(agendamento);
     }
 
-
-    
+    @Delete(':id')
+    async delete(@Param('id') id: string) {
+        this.AgendamentosService.delete(id);
+    }
 }

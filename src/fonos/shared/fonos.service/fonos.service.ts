@@ -46,7 +46,10 @@ export class FonosService
     
     async create(fono: Fono) {
         const createdFono = new this.FonoModel(fono);
+        return await createdFono.save();
+        
         //while true se o crfa existe se sim vc cria um novo false
+        /*
         while (true)
         {
             let crfa = crfaGenerator();
@@ -59,7 +62,7 @@ export class FonosService
                 return await createdFono.save();
             }
         }
-        
+        */
     }
 
     /* async update(id: string, Fono: Fono) {
