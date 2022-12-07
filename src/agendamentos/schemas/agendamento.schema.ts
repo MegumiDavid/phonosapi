@@ -7,5 +7,6 @@ export const AgendamentoSchema = new mongoose.Schema({
     fono: String,
     paciente: String,
     tipo: String,
+    status: String,
     endereco: String
 });

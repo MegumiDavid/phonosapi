@@ -66,7 +66,7 @@ export class PacientesService
             if(x == 0)
             {
                 createdPaciente.token = token;
-                createdPaciente.password = '';
+                createdPaciente.password = `${createdPaciente.fname}${createdPaciente.lname}`;
                 createdPaciente.firstLogin = true;
                 // createdPaciente.img = 'some image url';
                 return await createdPaciente.save();

@@ -31,6 +31,8 @@ export class AgendamentosController
         return this.AgendamentosService.create(agendamento);
     }
 
-
-    
+    @Delete(':id')
+    async delete(@Param('id') id: string) {
+        this.AgendamentosService.delete(id);
+    }
 }
