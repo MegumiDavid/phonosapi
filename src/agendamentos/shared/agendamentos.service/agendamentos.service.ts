@@ -21,6 +21,14 @@ export class AgendamentosService
     async getAll() {
         return await this.AgendamentoModel.find().exec();
     }
+
+    async getByFono(crfa: string) {
+        return await this.AgendamentoModel.find({ fono: crfa }).exec();
+    }
+
+    async getByPaciente(token: string) {
+        return await this.AgendamentoModel.find({ paciente: token }).exec();
+    }
     
     async create(agendamento: Agendamento) {
         const createdAgendamento = new this.AgendamentoModel(agendamento);

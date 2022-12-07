@@ -15,6 +15,15 @@ export class AgendamentosController
         return this.AgendamentosService.getAll();
     }
 
+    @Get(':crfa')
+    async getByFono(@Param('crfa') crfa: string) : Promise<Agendamento[]> {
+        return this.AgendamentosService.getByFono(crfa);
+    }
+
+    @Get('filterpaciente/:token')
+    async getByPaciente(@Param('token') token: string) : Promise<Agendamento[]> {
+        return this.AgendamentosService.getByPaciente(token);
+    }
 
     @Post()
     async create(@Body() agendamento:Agendamento): Promise<Agendamento> 
