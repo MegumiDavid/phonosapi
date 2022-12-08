@@ -31,6 +31,13 @@ export class AgendamentosController
         return this.AgendamentosService.create(agendamento);
     }
 
+    @Put(':id')
+    async update(@Param('id') id: string, @Body() agendamento:Agendamento): Promise<Agendamento[]> 
+    {
+        return this.AgendamentosService.update(id, agendamento);
+    }
+
+
     @Delete(':id')
     async delete(@Param('id') id: string) {
         this.AgendamentosService.delete(id);

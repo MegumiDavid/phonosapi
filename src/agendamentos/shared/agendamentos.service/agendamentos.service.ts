@@ -29,6 +29,15 @@ export class AgendamentosService
     async getByPaciente(token: string) {
         return await this.AgendamentoModel.find({ paciente: token }).exec();
     }
+
+    async getById(id: string) {
+        return await this.AgendamentoModel.find({ _id: id }).exec();
+    }
+
+    async update(id: string, agendamento: Agendamento) {
+        await this.AgendamentoModel.findOneAndUpdate({ _id: id }, agendamento).exec();
+        return this.getById(id);
+    }
     
     async create(agendamento: Agendamento) {
         const createdAgendamento = new this.AgendamentoModel(agendamento);
