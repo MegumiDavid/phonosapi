@@ -11,6 +11,7 @@ import { MongooseModule } from '@nestjs/mongoose';
         ])
     ],
   controllers: [FonosController],
-  providers: [FonosService]
+  providers: [FonosService],
+  exports: [FonosService]
 })
 export class FonosModule {}

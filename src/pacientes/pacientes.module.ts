@@ -12,7 +12,8 @@ import { PacienteSchema } from './schemas/paciente.schema';
         ])
     ],
     controllers: [PacientesController],
-    providers: [PacientesService]
+    providers: [PacientesService],
+    exports: [PacientesService]
 })
 
 export class PacientesModule {}

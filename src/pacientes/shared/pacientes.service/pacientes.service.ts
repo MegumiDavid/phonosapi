@@ -53,7 +53,7 @@ export class PacientesService
     }
 
     async getById(token: string) {
-        return await this.pacienteModel.find({ token: token }).exec();
+        return await this.pacienteModel.findOne({ token }).exec();
     }
     
     async create(paciente: Paciente) {
@@ -62,8 +62,8 @@ export class PacientesService
         while (true)
         {
             let token = tokenGenerator();
-            let x = (await this.getById(token)).length;
-            if(x == 0)
+            let x = (await this.getById(token));
+            if(!x)
             {
                 createdPaciente.token = token;
                 createdPaciente.password = `${createdPaciente.fname}${createdPaciente.lname}`;

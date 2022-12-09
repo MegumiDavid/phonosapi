@@ -1,6 +1,8 @@
-import { Controller, Get, Param, Post, Body, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Put, Delete, UseGuards } from '@nestjs/common';
 import { PacientesService } from './shared/pacientes.service/pacientes.service';
 import { Paciente } from './shared/paciente/paciente'
+import { JwtAuthGuard } from 'src/auth/shared/jwt-auth.guard';
+import { JwtPacienteAuthGuard } from 'src/auth/shared/jwtpaciente-auth.guard';
 
 @Controller('pacientes')
 export class PacientesController 
@@ -9,14 +11,16 @@ export class PacientesController
         private pacientesService: PacientesService
     ) {}
 
+    @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
     @Get()
     async getAll(): Promise<Paciente[]> 
     {
         return this.pacientesService.getAll();
     }
 
+    @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
     @Get(':token')
-    async getById(@Param('token') token: string) : Promise<Paciente[]> {
+    async getById(@Param('token') token: string) : Promise<Paciente> {
         return this.pacientesService.getById(token);
     }
 
@@ -27,18 +31,21 @@ export class PacientesController
         return this.pacientesService.getByFname(fname);
     } */
 
+    @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
     @Post()
     async create(@Body() paciente:Paciente): Promise<Paciente> 
     {
         return this.pacientesService.create(paciente);
     }
 
+    @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
     @Put(':token')
-    async update(@Param('token') token: string, @Body() paciente: Paciente): Promise<Paciente[]> 
+    async update(@Param('token') token: string, @Body() paciente: Paciente): Promise<Paciente> 
     {
         return this.pacientesService.update(token, paciente);
     }
 
+    @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
     @Delete(':token')
     async delete(@Param('token') token: string) 
     {
