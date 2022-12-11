@@ -36,12 +36,12 @@ export class FonosService
     }
 
     async update(crfa: string, fono: Fono) {
-        await this.FonoModel.findOneAndUpdate({ crfa: crfa }, fono).exec();
+        await this.FonoModel.findOneAndUpdate({ crfa }, fono).exec();
         return this.getById(crfa);
     }
     
     async delete(crfa: string) {
-        return await this.FonoModel.deleteOne({ crfa: crfa }).exec();
+        return await this.FonoModel.deleteOne({ crfa }).exec();
     }
   
     

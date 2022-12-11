@@ -24,14 +24,12 @@ export class FonosController
         return this.FonosService.getById(crfa);
     }
 
-    // retornar um lista
-    /* @Get(':fname')
-    async geByFname(@Param('fname') fname: string): Promise<Fono> 
+    @Get('email/:email')
+    async geByFname(@Param('email') email: string): Promise<Fono> 
     {
-        return this.FonosService.getByFname(fname);
-    } */
+        return this.FonosService.getByEmail(email);
+    } 
 
-    @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
     @Post()
     async create(@Body() fono:Fono): Promise<Fono> 
     {

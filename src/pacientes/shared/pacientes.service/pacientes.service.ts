@@ -55,6 +55,10 @@ export class PacientesService
     async getById(token: string) {
         return await this.pacienteModel.findOne({ token }).exec();
     }
+
+    async getByFono(fonos: string) {
+        return await this.pacienteModel.find({ fonos }).exec();
+    }
     
     async create(paciente: Paciente) {
         const createdPaciente = new this.pacienteModel(paciente);

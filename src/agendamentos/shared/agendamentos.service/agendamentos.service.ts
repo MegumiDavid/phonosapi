@@ -23,7 +23,14 @@ export class AgendamentosService
     }
 
     async getByFono(crfa: string) {
-        return await this.AgendamentoModel.find({ fono: crfa }).exec();
+        let agendamentos = await this.AgendamentoModel.find({ fono: crfa }).exec();
+        agendamentos = agendamentos.sort((objA, objB) => {
+            let dataA = new Date (objA.data);
+            let dataB = new Date(objB.data);
+            return dataA.getTime() - dataB.getTime();
+        });
+            
+        return agendamentos;
     }
 
     async getByPaciente(token: string) {

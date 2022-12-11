@@ -24,12 +24,11 @@ export class PacientesController
         return this.pacientesService.getById(token);
     }
 
-    // retornar um lista
-    /* @Get(':fname')
-    async geByFname(@Param('fname') fname: string): Promise<Paciente> 
-    {
-        return this.pacientesService.getByFname(fname);
-    } */
+    @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
+    @Get('filter/:fonos')
+    async getByFono(@Param('fonos') fonos: string) : Promise<Paciente[]> {
+        return this.pacientesService.getByFono(fonos);
+    }
 
     @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
     @Post()

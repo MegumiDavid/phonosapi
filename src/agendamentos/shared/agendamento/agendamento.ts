@@ -9,7 +9,10 @@ export class Agendamento extends Document
     data: string;
 
     @Prop()
-    hora: string;
+    inicio: string;
+
+    @Prop()
+    fim: string;
 
     @Prop()
     fono: string;
