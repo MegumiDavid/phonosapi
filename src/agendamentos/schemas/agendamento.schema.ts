@@ -3,8 +3,7 @@ import * as mongoose from "mongoose";
 export const AgendamentoSchema = new mongoose.Schema({
 
     data: String,
-    inicio: String,
-    fim: String,
+    hora: String,
     fono: String,
     paciente: String,
     tipo: String,
