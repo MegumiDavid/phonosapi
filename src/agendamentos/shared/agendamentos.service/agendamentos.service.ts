@@ -24,13 +24,46 @@ export class AgendamentosService
 
     async getByFono(crfa: string) {
         let agendamentos = await this.AgendamentoModel.find({ fono: crfa }).exec();
-        agendamentos = agendamentos.sort((objA, objB) => {
-            let dataA = new Date (objA.data);
-            let dataB = new Date(objB.data);
-            return dataA.getTime() - dataB.getTime();
-        });
-            
+        agendamentos = agendamentos.sort((objA, objB) => 
+        ((new Date(  parseInt(objA.data.split('-')[0]),  
+                     parseInt(objA.data.split('-')[1]), 
+                     parseInt(objA.data.split('-')[2]),
+                     parseInt(objA.hora.split(':')[0]),
+                     parseInt(objA.hora.split(':')[1])).getTime()) - 
+          new Date(  parseInt(objB.data.split('-')[0]),  
+                     parseInt(objB.data.split('-')[1]), 
+                     parseInt(objB.data.split('-')[2]),
+                     parseInt(objB.hora.split(':')[0]),
+                     parseInt(objB.hora.split(':')[1])).getTime()));   
         return agendamentos;
+    }
+
+    async getByFonoFuturos(crfa: string) {
+        const agendamentos = await this.getByFono(crfa);
+        let aux = [];
+        for (var i = 0; i < agendamentos.length; i++) 
+        {
+            let dataobj = new Date(agendamentos[i].data);
+            let horasobj = parseInt(agendamentos[i].hora.split(':')[0]);
+            let minutosobj = parseInt(agendamentos[i].hora.split(':')[1]);
+            let compara = new Date(dataobj.getFullYear(), dataobj.getMonth(), dataobj.getDate()+1, horasobj-3, minutosobj)
+            if (compara.getTime() >= new Date(Date.now()-10800000).getTime()) aux.push(agendamentos[i]);
+        }
+        return aux;
+    }
+
+    async getByFonoPassados(crfa: string) {
+        const agendamentos = await this.getByFono(crfa);
+        let aux = [];
+        for (var i = 0; i < agendamentos.length; i++) 
+        {
+            let dataobj = new Date(agendamentos[i].data);
+            let horasobj = parseInt(agendamentos[i].hora.split(':')[0]);
+            let minutosobj = parseInt(agendamentos[i].hora.split(':')[1]);
+            let compara = new Date(dataobj.getFullYear(), dataobj.getMonth(), dataobj.getDate()+1, horasobj-3, minutosobj)
+            if (compara.getTime() <= new Date(Date.now()-10800000).getTime()) aux.push(agendamentos[i]);
+        }
+        return aux;
     }
 
     async getByPaciente(token: string) {

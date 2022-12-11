@@ -24,6 +24,7 @@ export class FonosController
         return this.FonosService.getById(crfa);
     }
 
+    @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
     @Get('email/:email')
     async geByFname(@Param('email') email: string): Promise<Fono> 
     {

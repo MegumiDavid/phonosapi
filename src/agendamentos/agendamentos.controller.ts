@@ -26,6 +26,18 @@ export class AgendamentosController
     }
 
     @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
+    @Get('futuros/:crfa')
+    async getByFonoFuturos(@Param('crfa') crfa: string) : Promise<Agendamento[]> {
+        return this.AgendamentosService.getByFonoFuturos(crfa);
+    }
+
+    @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
+    @Get('passados/:crfa')
+    async getByFonoPassados(@Param('crfa') crfa: string) : Promise<Agendamento[]> {
+        return this.AgendamentosService.getByFonoPassados(crfa);
+    }
+
+    @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
     @Get('filterpaciente/:token')
     async getByPaciente(@Param('token') token: string) : Promise<Agendamento[]> {
         return this.AgendamentosService.getByPaciente(token);
