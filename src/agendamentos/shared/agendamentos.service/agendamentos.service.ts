@@ -43,11 +43,11 @@ export class AgendamentosService
         let aux = [];
         for (var i = 0; i < agendamentos.length; i++) 
         {
-            let dataobj = new Date(agendamentos[i].data);
-            let horasobj = parseInt(agendamentos[i].hora.split(':')[0]);
-            let minutosobj = parseInt(agendamentos[i].hora.split(':')[1]);
-            let compara = new Date(dataobj.getFullYear(), dataobj.getMonth(), dataobj.getDate()+1, horasobj-3, minutosobj)
-            if (compara.getTime() >= new Date(Date.now()-10800000).getTime()) aux.push(agendamentos[i]);
+            let comparaString = agendamentos[i].data + 'T' + agendamentos[i].hora;
+            const compara = new Date(comparaString);
+            const dataAtual = new Date();
+            //console.log(comparaString, compara, dataAtual)
+            if (compara.getTime() >= dataAtual.getTime()) aux.push(agendamentos[i]);
         }
         return aux;
     }
@@ -57,11 +57,11 @@ export class AgendamentosService
         let aux = [];
         for (var i = 0; i < agendamentos.length; i++) 
         {
-            let dataobj = new Date(agendamentos[i].data);
-            let horasobj = parseInt(agendamentos[i].hora.split(':')[0]);
-            let minutosobj = parseInt(agendamentos[i].hora.split(':')[1]);
-            let compara = new Date(dataobj.getFullYear(), dataobj.getMonth(), dataobj.getDate()+1, horasobj-3, minutosobj)
-            if (compara.getTime() <= new Date(Date.now()-10800000).getTime()) aux.push(agendamentos[i]);
+            let comparaString = agendamentos[i].data + 'T' + agendamentos[i].hora;
+            const compara = new Date(comparaString);
+            const dataAtual = new Date();
+            //console.log(comparaString, compara, dataAtual)
+            if (compara.getTime() < dataAtual.getTime()) aux.push(agendamentos[i]);
         }
         return aux;
     }
