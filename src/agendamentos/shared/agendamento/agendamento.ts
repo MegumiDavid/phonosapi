@@ -21,7 +21,7 @@ export class Agendamento extends Document
     tipo: string;
 
     @Prop()
-    endereco: string;
+    endereco: String[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(Agendamento);

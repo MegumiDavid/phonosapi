@@ -8,5 +8,5 @@ export const AgendamentoSchema = new mongoose.Schema({
     paciente: String,
     tipo: String,
     status: String,
-    endereco: String
+    endereco: []
 });
