@@ -15,7 +15,7 @@ import { JwtPacienteStrategy } from './shared/jwtpaciente.strategy';
     imports: [FonosModule, PacientesModule, PassportModule, 
         JwtModule.register({
             secret: jwtConstants.secret,
-            signOptions: {expiresIn: '28800s'}
+            signOptions: {expiresIn: '57600s'}
         })],
     controllers: [AuthController, ],
     providers: [AuthService, LocalStrategy, PacienteStrategy, JwtStrategy, JwtPacienteStrategy],
