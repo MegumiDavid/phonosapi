@@ -12,13 +12,19 @@ export class Agendamento extends Document
     hora: string;
 
     @Prop()
+    isSemanal: boolean;
+
+    @Prop()
+    isOnline: boolean;
+
+    @Prop()
     fono: string;
 
     @Prop()
     paciente: string;
-    
+
     @Prop()
-    tipo: string;
+    isOver: boolean;
 
     @Prop()
     endereco: String[];

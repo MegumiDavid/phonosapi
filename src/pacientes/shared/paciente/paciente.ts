@@ -14,6 +14,9 @@ export class Paciente extends Document {
     lname: string;
 
     @Prop()
+    sexo: string;
+
+    @Prop()
     img: string;
     
     @Prop()
@@ -21,6 +24,9 @@ export class Paciente extends Document {
 
     @Prop()
     condicao: string;
+
+    @Prop()
+    relatorio: string;
 
     @Prop()
     firstLogin: boolean;
