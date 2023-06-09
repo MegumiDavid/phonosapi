@@ -10,7 +10,7 @@ import { AgendamentosModule } from './agendamentos/agendamentos.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://david_linguica:linguicaatomica.2003@cluster0.r1gyy1y.mongodb.net/?retryWrites=true&w=majority'),
+    MongooseModule.forRoot('mongodb+srv://david_linguica:linguicaatomica.2003@phonoscluster.5dqyjfl.mongodb.net/?retryWrites=true&w=majority'),
     PacientesModule,
     FonosModule,
     AgendamentosModule,
