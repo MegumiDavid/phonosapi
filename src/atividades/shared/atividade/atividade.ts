@@ -23,6 +23,9 @@ export class Atividade extends Document {
     arquivoPath: string;
 
     @Prop()
+    entregaPath: string;
+
+    @Prop()
     fono: string;
 
     @Prop()

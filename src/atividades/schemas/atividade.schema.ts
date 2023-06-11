@@ -7,6 +7,7 @@ export const AtividadesSchema = new mongoose.Schema({
     descricao: String,
     feedback: String,
     arquivoPath: String,
+    entregaPath: String,
     fono: String,
     paciente: String
 });

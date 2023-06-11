@@ -54,6 +54,25 @@ export class AtividadesController {
     }
 
     // @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
+    @Put('paciente/:id')
+    @UseInterceptors(
+        FileInterceptor('file', {
+            storage: diskStorage({
+                destination: './uploads',
+                filename: (req, file, callback) => {
+                    const filename = `${file.originalname}`;
+                    callback(null, filename);
+                },
+            }),
+        }),
+    )
+    async updatePaciente(@Param('id') id: string, @UploadedFile() file: Express.Multer.File, @Body() atividade: Atividade): Promise<Atividade[]> {
+        console.log('file', file);
+        atividade.entregaPath = file.originalname;
+        return this.AtividadeService.update(id, atividade);
+    }
+
+    // @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
     @Put(':id')
     async update(@Param('id') id: string, @Body() atividade: Atividade): Promise<Atividade[]> {
         return this.AtividadeService.update(id, atividade);
