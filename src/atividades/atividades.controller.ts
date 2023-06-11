@@ -22,7 +22,7 @@ export class AtividadesController {
             storage: diskStorage({
                 destination: './uploads',
                 filename: (req, file, callback) => {
-                    const filename = `${file.originalname}${extname(file.originalname)}`;
+                    const filename = `${file.originalname}`;
                     callback(null, filename);
                 },
             }),
