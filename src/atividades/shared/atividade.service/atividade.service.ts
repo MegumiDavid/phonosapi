@@ -13,4 +13,18 @@ export class AtividadeService {
         return await createdAtividade.save();
     }
 
+    async getByFono(crfa: string) {
+        let atividades = await this.AtividadeModel.find({ fono: crfa }).exec();
+        atividades = atividades.sort((objA, objB) =>
+        ((new Date(parseInt(objA.entrega.split('-')[0]),
+            parseInt(objA.entrega.split('-')[1]),
+            parseInt(objA.entrega.split('-')[2])
+            ).getTime()) -
+            new Date(parseInt(objB.entrega.split('-')[0]),
+                parseInt(objB.entrega.split('-')[1]),
+                parseInt(objB.entrega.split('-')[2])
+                ).getTime()));
+        return atividades;
+    }
+
 }

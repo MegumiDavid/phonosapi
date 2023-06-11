@@ -34,16 +34,17 @@ export class AtividadesController {
         return this.AtividadeService.create(atividade);
     }
 
+    // @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)   
     @Get('file/:filepath')
     seeUploadedFile(@Param('filepath') file,
         @Res() res) {
         return res.download(file, { root: './uploads' })
     }
 
-    @Post()
-    async create(@Body() atividade: Atividade): Promise<Atividade> {
-        return this.AtividadeService.create(atividade);
+    // @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)   
+    @Get(':crfa')
+    async getByFono(@Param('crfa') crfa: string): Promise<Atividade[]> {
+        return this.AtividadeService.getByFono(crfa);
     }
-
 
 }
