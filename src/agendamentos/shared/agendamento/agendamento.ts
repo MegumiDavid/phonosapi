@@ -3,8 +3,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 
 
 @Schema()
-export class Agendamento extends Document 
-{
+export class Agendamento extends Document {
     @Prop()
     data: string;
 
@@ -12,10 +11,10 @@ export class Agendamento extends Document
     hora: string;
 
     @Prop()
-    isSemanal: boolean;
+    isSemanal: string;
 
     @Prop()
-    isOnline: boolean;
+    isOnline: string;
 
     @Prop()
     fono: string;
@@ -24,7 +23,7 @@ export class Agendamento extends Document
     paciente: string;
 
     @Prop()
-    isOver: boolean;
+    isOver: string;
 
     @Prop()
     endereco: String[];

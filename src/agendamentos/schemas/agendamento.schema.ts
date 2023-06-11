@@ -4,10 +4,10 @@ export const AgendamentoSchema = new mongoose.Schema({
 
     data: String,
     hora: String,
-    isSemanal: Boolean,
-    isOnline: Boolean,
+    isSemanal: String,
+    isOnline: String,
     fono: String,
     paciente: String,
-    isOver: Boolean,
+    isOver: String,
     endereco: []
 });

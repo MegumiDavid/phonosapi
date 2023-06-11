@@ -5,37 +5,28 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 @Schema()
 export class Atividade extends Document {
     @Prop()
-    token: string;
+    titulo: string;
 
     @Prop()
-    fname: string;
+    entrega: string;
 
     @Prop()
-    lname: string;
+    isEntregue: string;
 
     @Prop()
-    sexo: string;
+    descricao: string;
 
     @Prop()
-    img: string;
+    feedback: string;
 
     @Prop()
-    bday: string;
+    arquivoPath: string;
 
     @Prop()
-    condicao: string;
+    fono: string;
 
     @Prop()
-    relatorio: string;
-
-    @Prop()
-    firstLogin: boolean;
-
-    @Prop()
-    password: string;
-
-    @Prop()
-    fonos: String[];
+    paciente: string;
 }
 
 

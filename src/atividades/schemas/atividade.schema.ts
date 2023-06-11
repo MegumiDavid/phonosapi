@@ -3,10 +3,11 @@ import * as mongoose from "mongoose";
 export const AtividadesSchema = new mongoose.Schema({
     titulo: String,
     entrega: String,
-    isEntregue: Boolean,
+    isEntregue: String,
     descricao: String,
+    feedback: String,
     arquivoPath: String,
-    fonos: [],
-    pacientes: []
+    fono: String,
+    paciente: String
 });
 

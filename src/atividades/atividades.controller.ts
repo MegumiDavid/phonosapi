@@ -16,24 +16,22 @@ export class AtividadesController {
     ) { }
 
     // @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)    
-    @Post('/file')
+    @Post()
     @UseInterceptors(
         FileInterceptor('file', {
             storage: diskStorage({
                 destination: './uploads',
                 filename: (req, file, callback) => {
-                    const uniqueSuffix =
-                        Date.now() + '-' + Math.round(Math.random() * 1e9);
-                    const ext = extname(file.originalname);
-                    const filename = `${uniqueSuffix}${ext}`;
+                    const filename = `${file.originalname}${extname(file.originalname)}`;
                     callback(null, filename);
                 },
             }),
         }),
     )
-    handleUpload(@UploadedFile() file: Express.Multer.File) {
+    handleUpload(@UploadedFile() file: Express.Multer.File, @Body() atividade: Atividade) {
         console.log('file', file);
-        return 'Sucesso';
+        atividade.arquivoPath = file.originalname;
+        return this.AtividadeService.create(atividade);
     }
 
     @Get('file/:filepath')
@@ -41,5 +39,11 @@ export class AtividadesController {
         @Res() res) {
         return res.download(file, { root: './uploads' })
     }
+
+    @Post()
+    async create(@Body() atividade: Atividade): Promise<Atividade> {
+        return this.AtividadeService.create(atividade);
+    }
+
 
 }
