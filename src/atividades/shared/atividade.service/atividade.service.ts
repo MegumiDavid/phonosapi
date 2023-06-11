@@ -5,7 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
 export class AtividadeService {
-    
+
     constructor(@InjectModel('Atividade') private readonly AtividadeModel: Model<Atividade>) { }
 
     async create(atividade: Atividade) {
@@ -19,12 +19,17 @@ export class AtividadeService {
         ((new Date(parseInt(objA.entrega.split('-')[0]),
             parseInt(objA.entrega.split('-')[1]),
             parseInt(objA.entrega.split('-')[2])
-            ).getTime()) -
+        ).getTime()) -
             new Date(parseInt(objB.entrega.split('-')[0]),
                 parseInt(objB.entrega.split('-')[1]),
                 parseInt(objB.entrega.split('-')[2])
-                ).getTime()));
+            ).getTime()));
         return atividades;
     }
+
+    async getByPaciente(token: string) {
+        return await this.AtividadeModel.find({ paciente: token }).exec();
+    }
+
 
 }

@@ -47,4 +47,10 @@ export class AtividadesController {
         return this.AtividadeService.getByFono(crfa);
     }
 
+    // @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
+    @Get('filterpaciente/:token')
+    async getByPaciente(@Param('token') token: string): Promise<Atividade[]> {
+        return this.AtividadeService.getByPaciente(token);
+    }
+
 }
