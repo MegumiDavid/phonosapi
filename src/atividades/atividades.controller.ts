@@ -53,4 +53,16 @@ export class AtividadesController {
         return this.AtividadeService.getByPaciente(token);
     }
 
+    // @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
+    @Put(':id')
+    async update(@Param('id') id: string, @Body() atividade: Atividade): Promise<Atividade[]> {
+        return this.AtividadeService.update(id, atividade);
+    }
+
+    // @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
+    @Delete(':id')
+    async delete(@Param('id') id: string) {
+        this.AtividadeService.delete(id);
+    }
+
 }

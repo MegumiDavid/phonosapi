@@ -31,5 +31,17 @@ export class AtividadeService {
         return await this.AtividadeModel.find({ paciente: token }).exec();
     }
 
+    async getById(id: string) {
+        return await this.AtividadeModel.find({ _id: id }).exec();
+    }
+
+    async update(id: string, atividade: Atividade) {
+        await this.AtividadeModel.findOneAndUpdate({ _id: id }, atividade).exec();
+        return this.getById(id);
+    }
+
+    async delete(id: string) {
+        return await this.AtividadeModel.deleteOne({ _id: id }).exec();
+    }
 
 }
