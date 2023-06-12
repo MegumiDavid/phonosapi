@@ -98,7 +98,7 @@ export class AtividadesController {
     }
 
     // @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
-    @Put('file/:id')
+    @Put(':id')
     async update(@Param('id') id: string, @Body() atividade: Atividade): Promise<Atividade[]> {
         return this.AtividadeService.update(id, atividade);
     }
