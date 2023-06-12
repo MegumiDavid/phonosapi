@@ -73,6 +73,12 @@ export class AtividadesController {
     }
 
     // @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
+    @Get('id/:id')
+    async getById(@Param('id') id: string): Promise<Atividade[]> {
+        return this.AtividadeService.getById(id);
+    }
+
+    // @UseGuards(JwtAuthGuard, JwtPacienteAuthGuard)
     @Put(':id')
     async update(@Param('id') id: string, @Body() atividade: Atividade): Promise<Atividade[]> {
         return this.AtividadeService.update(id, atividade);
